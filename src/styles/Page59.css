@@ -1,0 +1,325 @@
+/* Page59 styles - следуя стилю Page56 с Tailwind CSS */
+
+/* Основной контейнер страницы */
+.page59 {
+  @apply min-h-screen pb-32 pt-12;
+}
+
+/* Заголовок страницы */
+.page59 .page-header {
+  @apply text-center mb-16 space-y-4;
+}
+
+.page59 .page-badge {
+  @apply inline-block px-4 py-2 bg-destructive/10 rounded-full mb-4;
+}
+
+.page59 .page-badge span {
+  @apply text-sm font-semibold text-destructive tracking-wider;
+}
+
+.page59 .main-title {
+  @apply font-serif text-5xl md:text-7xl font-bold text-foreground mb-6;
+}
+
+.page59 .subtitle {
+  @apply text-xl text-muted-foreground max-w-3xl mx-auto;
+}
+
+/* Контент секции */
+.page59 .content-section {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg;
+}
+
+.page59 .section-title {
+  @apply text-3xl font-serif font-bold mb-8 text-accent;
+}
+
+/* Интерактивная визуализация */
+.page59 .visualization-section {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg text-center;
+}
+
+.page59 .visualization-container {
+  @apply max-w-4xl mx-auto;
+}
+
+.page59 .visualization-header {
+  @apply mb-12;
+}
+
+.page59 .visualization-header h3 {
+  @apply text-2xl font-serif font-bold mb-4 text-accent;
+}
+
+.page59 .visualization-header p {
+  @apply text-muted-foreground text-lg leading-relaxed;
+}
+
+.page59 .silhouettes-grid {
+  @apply grid grid-cols-10 gap-2 my-12 p-8 bg-muted/30 rounded-lg border border-border;
+}
+
+.page59 .silhouette {
+  @apply w-12 h-12 transition-all duration-700 transform scale-100 opacity-100;
+}
+
+.page59 .silhouette.disappeared {
+  @apply opacity-0 scale-[0.3] rotate-180;
+}
+
+.page59 .person-icon {
+  @apply w-full h-full fill-primary transition-all duration-700;
+}
+
+.page59 .silhouette.disappeared .person-icon {
+  @apply fill-muted-foreground;
+}
+
+.page59 .visualization-controls {
+  @apply my-8 space-x-4;
+}
+
+.page59 .start-animation-btn,
+.page59 .reset-animation-btn {
+  @apply inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors font-semibold;
+}
+
+.page59 .visualization-legend {
+  @apply flex justify-center gap-8 mt-8 flex-wrap;
+}
+
+.page59 .legend-item {
+  @apply flex items-center gap-3;
+}
+
+.page59 .legend-color {
+  @apply w-5 h-5 rounded-full;
+}
+
+.page59 .legend-color.survivor {
+  @apply bg-blue-500;
+}
+
+.page59 .legend-color.victim {
+  @apply bg-primary;
+}
+
+.page59 .legend-item span {
+  @apply text-foreground font-semibold;
+}
+
+/* Статистика */
+.page59 .statistics-section {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg;
+}
+
+.page59 .statistics-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.page59 .stat-card {
+  @apply border rounded-lg p-6 hover:bg-muted/50 transition-colors;
+}
+
+.page59 .stat-header h3 {
+  @apply font-bold text-lg mb-4 text-accent;
+}
+
+.page59 .stat-number {
+  @apply text-4xl font-bold text-destructive mb-4;
+}
+
+.page59 .stat-description {
+  @apply text-muted-foreground leading-relaxed mb-4;
+}
+
+.page59 .stat-percentage {
+  @apply flex items-center gap-4;
+}
+
+.page59 .percentage {
+  @apply text-2xl font-bold text-primary;
+}
+
+.page59 .percentage-detail {
+  @apply text-sm text-muted-foreground;
+}
+
+/* Сравнение с современностью */
+.page59 .modern-comparison-section {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg;
+}
+
+.page59 .comparison-intro {
+  @apply text-muted-foreground text-center text-lg leading-relaxed mb-8 max-w-4xl mx-auto;
+}
+
+.page59 .comparisons-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.page59 .comparison-card {
+  @apply border rounded-lg p-6 hover:bg-muted/50 transition-colors;
+}
+
+.page59 .comparison-header {
+  @apply flex justify-between items-center mb-4 flex-wrap gap-2;
+}
+
+.page59 .comparison-header h3 {
+  @apply font-bold text-lg text-accent;
+}
+
+.page59 .population {
+  @apply bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold;
+}
+
+.page59 .comparison-text p {
+  @apply text-muted-foreground leading-relaxed;
+}
+
+/* Региональная разбивка */
+.page59 .regional-breakdown {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg;
+}
+
+.page59 .regions-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.page59 .region-card {
+  @apply border rounded-lg p-6 hover:bg-muted/50 transition-colors;
+}
+
+.page59 .region-card h3 {
+  @apply font-bold text-lg mb-4 text-accent;
+}
+
+.page59 .region-stats {
+  @apply space-y-3;
+}
+
+.page59 .region-stat {
+  @apply flex justify-between items-center py-2 border-b border-border last:border-b-0;
+}
+
+.page59 .stat-label {
+  @apply text-muted-foreground text-sm;
+}
+
+.page59 .stat-value {
+  @apply font-semibold text-primary;
+}
+
+.page59 .percentage-high {
+  @apply text-destructive text-lg font-bold;
+}
+
+.page59 .percentage-medium {
+  @apply text-orange-500 text-lg font-bold;
+}
+
+/* Временная динамика */
+.page59 .timeline-losses {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg;
+}
+
+.page59 .timeline-container {
+  @apply space-y-6 max-w-4xl mx-auto;
+}
+
+.page59 .timeline-year {
+  @apply border rounded-lg p-6 border-l-4 border-destructive hover:bg-muted/50 transition-colors;
+}
+
+.page59 .year-header {
+  @apply flex justify-between items-center mb-4 flex-wrap gap-2;
+}
+
+.page59 .year-header h3 {
+  @apply font-bold text-xl text-accent;
+}
+
+.page59 .casualties {
+  @apply bg-destructive/10 text-destructive px-3 py-1 rounded-full font-semibold;
+}
+
+.page59 .year-events p {
+  @apply text-muted-foreground leading-relaxed italic;
+}
+
+/* Память о жертвах */
+.page59 .memory-section {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg text-center;
+}
+
+.page59 .memorial-quote {
+  @apply text-xl font-serif italic text-foreground leading-relaxed mb-8 p-8 bg-primary/5 rounded-lg border-l-4 border-primary max-w-4xl mx-auto;
+}
+
+.page59 .memorial-numbers {
+  @apply flex justify-center gap-8 mb-8 flex-wrap;
+}
+
+.page59 .memorial-stat {
+  @apply flex flex-col items-center p-6 bg-primary/10 rounded-lg border-2 border-primary/20 min-w-[200px];
+}
+
+.page59 .memorial-stat .number {
+  @apply text-4xl font-bold text-primary mb-3;
+}
+
+.page59 .memorial-stat .label {
+  @apply text-primary font-semibold text-center leading-tight;
+}
+
+.page59 .memory-call {
+  @apply border rounded-lg p-6 border-t-4 border-primary max-w-3xl mx-auto;
+}
+
+.page59 .memory-call h3 {
+  @apply font-bold text-lg mb-3 text-accent;
+}
+
+.page59 .memory-call p {
+  @apply text-muted-foreground leading-relaxed text-left;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .page59 .main-title {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  .page59 .silhouettes-grid {
+    @apply grid-cols-5 gap-1;
+  }
+  
+  .page59 .silhouette {
+    @apply w-8 h-8;
+  }
+  
+  .page59 .statistics-grid,
+  .page59 .comparisons-grid,
+  .page59 .regions-grid {
+    @apply grid-cols-1;
+  }
+  
+  .page59 .visualization-legend {
+    @apply flex-col gap-4;
+  }
+  
+  .page59 .memorial-numbers {
+    @apply flex-col gap-4;
+  }
+  
+  .page59 .year-header,
+  .page59 .comparison-header {
+    @apply flex-col gap-2 text-center;
+  }
+  
+  .page59 .region-stat {
+    @apply flex-col gap-1 text-center;
+  }
+}

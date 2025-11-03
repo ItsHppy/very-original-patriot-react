@@ -1,0 +1,380 @@
+/* Page58 styles - следуя стилю Page56 с Tailwind CSS */
+
+/* Основной контейнер страницы */
+.page58 {
+  @apply min-h-screen pb-32 pt-12;
+}
+
+/* Заголовок страницы */
+.page58 .page-header {
+  @apply text-center mb-16 space-y-4;
+}
+
+.page58 .page-badge {
+  @apply inline-block px-4 py-2 bg-primary/10 rounded-full mb-4;
+}
+
+.page58 .page-badge span {
+  @apply text-sm font-semibold text-primary tracking-wider;
+}
+
+.page58 .main-title {
+  @apply font-serif text-5xl md:text-7xl font-bold text-foreground mb-6;
+}
+
+.page58 .subtitle {
+  @apply text-xl text-muted-foreground max-w-3xl mx-auto;
+}
+
+.page58 .listening-note {
+  @apply bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto mt-6;
+}
+
+.page58 .listening-note p {
+  @apply text-blue-700 mb-0;
+}
+
+/* Контент секции */
+.page58 .content-section {
+  @apply bg-card/80 backdrop-blur-sm border-border p-8 mb-12 rounded-lg;
+}
+
+.page58 .section-title {
+  @apply text-3xl font-serif font-bold mb-8 text-accent;
+}
+
+/* Аудиоплеер */
+.page58 .audio-player {
+  @apply bg-card/90 backdrop-blur-sm border-2 border-primary/20 p-6 mb-12 rounded-lg sticky top-4 z-50;
+}
+
+.page58 .now-playing {
+  @apply flex items-center gap-6 mb-6;
+}
+
+.page58 .playing-photo {
+  @apply w-20 h-20 rounded-full object-cover border-2 border-primary;
+}
+
+.page58 .playing-details h3 {
+  @apply text-xl font-bold text-primary mb-2;
+}
+
+.page58 .playing-details p {
+  @apply text-muted-foreground text-sm mb-1;
+}
+
+.page58 .audio-controls {
+  @apply flex items-center gap-4 flex-wrap;
+}
+
+.page58 .play-btn {
+  @apply w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors cursor-pointer;
+}
+
+.page58 .progress-section {
+  @apply flex-1 min-w-48;
+}
+
+.page58 .progress-bar {
+  @apply w-full h-2 bg-muted rounded-full mb-2;
+}
+
+.page58 .progress-fill {
+  @apply h-full bg-primary rounded-full transition-all duration-100;
+}
+
+.page58 .time-info {
+  @apply flex justify-between text-sm text-muted-foreground;
+}
+
+.page58 .speed-control {
+  @apply flex items-center gap-2;
+}
+
+.page58 .speed-control label {
+  @apply text-sm text-muted-foreground;
+}
+
+.page58 .speed-control select {
+  @apply border border-border rounded px-2 py-1 bg-background text-foreground;
+}
+
+/* Ключевые моменты */
+.page58 .key-moments {
+  @apply bg-muted/50 rounded-lg p-4 mt-4;
+}
+
+.page58 .key-moments h4 {
+  @apply font-bold text-primary mb-3;
+}
+
+.page58 .moments-list {
+  @apply flex flex-wrap gap-2;
+}
+
+.page58 .moment-btn {
+  @apply bg-background border border-border rounded px-3 py-2 hover:bg-muted/50 transition-colors cursor-pointer;
+}
+
+.page58 .moment-time {
+  @apply block text-xs font-bold text-primary mb-1;
+}
+
+.page58 .moment-desc {
+  @apply block text-xs text-muted-foreground;
+}
+
+/* Свидетельства */
+.page58 .testimonies-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-6;
+}
+
+.page58 .testimony-card {
+  @apply border rounded-lg overflow-hidden hover:bg-muted/30 transition-colors;
+}
+
+.page58 .testimony-card.active {
+  @apply border-primary bg-primary/5;
+}
+
+.page58 .testimony-card.archival {
+  @apply border-amber-500 bg-amber-50/50;
+}
+
+.page58 .testimony-photo {
+  @apply relative h-48 overflow-hidden;
+}
+
+.page58 .testimony-photo img {
+  @apply w-full h-full object-cover;
+}
+
+.page58 .archival-badge {
+  @apply absolute top-2 right-2 bg-amber-500 text-white text-xs px-2 py-1 rounded-full;
+}
+
+.page58 .play-overlay {
+  @apply absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer;
+}
+
+.page58 .play-overlay-btn {
+  @apply w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:scale-110 transition-transform;
+}
+
+.page58 .testimony-content {
+  @apply p-6;
+}
+
+.page58 .testimony-header {
+  @apply flex justify-between items-start mb-4;
+}
+
+.page58 .testimony-header h3 {
+  @apply font-bold text-lg text-primary;
+}
+
+.page58 .testimony-age {
+  @apply bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs;
+}
+
+.page58 .testimony-meta p {
+  @apply text-sm text-muted-foreground mb-2;
+}
+
+.page58 .testimony-story {
+  @apply text-muted-foreground mb-4 leading-relaxed;
+}
+
+.page58 .testimony-tags {
+  @apply flex flex-wrap gap-2 mb-4;
+}
+
+.page58 .tag {
+  @apply bg-primary/10 text-primary px-2 py-1 rounded text-xs;
+}
+
+.page58 .listen-btn {
+  @apply w-full bg-primary text-primary-foreground py-2 rounded hover:bg-primary/90 transition-colors;
+}
+
+/* Форматы прослушивания */
+.page58 .listening-options {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+}
+
+.page58 .option-card {
+  @apply border rounded-lg p-6 text-center hover:bg-muted/50 transition-colors;
+}
+
+.page58 .option-card h3 {
+  @apply font-bold text-lg mb-3 text-primary;
+}
+
+.page58 .option-card p {
+  @apply text-muted-foreground mb-4;
+}
+
+.page58 .option-stats {
+  @apply bg-primary/10 text-primary px-3 py-1 rounded text-sm font-semibold;
+}
+
+/* Видеоинтервью */
+.page58 .video-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.page58 .video-card {
+  @apply border rounded-lg overflow-hidden hover:bg-muted/30 transition-colors;
+}
+
+.page58 .video-thumbnail {
+  @apply relative h-48 overflow-hidden bg-muted;
+}
+
+.page58 .video-thumbnail img {
+  @apply w-full h-full object-cover;
+}
+
+.page58 .video-duration {
+  @apply absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs;
+}
+
+.page58 .video-play-btn {
+  @apply absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-colors cursor-pointer;
+}
+
+.page58 .video-info {
+  @apply p-4;
+}
+
+.page58 .video-info h3 {
+  @apply font-bold text-primary mb-2;
+}
+
+.page58 .video-info p {
+  @apply text-sm text-muted-foreground;
+}
+
+/* Текстовые воспоминания */
+.page58 .memories-collection {
+  @apply space-y-6 max-w-4xl mx-auto;
+}
+
+.page58 .memory-excerpt {
+  @apply border-l-4 border-primary bg-muted/30 p-6 rounded-r-lg;
+}
+
+.page58 .memory-excerpt h3 {
+  @apply font-bold text-lg text-primary mb-4;
+}
+
+.page58 .memory-excerpt blockquote {
+  @apply text-foreground italic text-lg leading-relaxed mb-4;
+}
+
+.page58 .memory-excerpt cite {
+  @apply text-muted-foreground text-sm;
+}
+
+/* Эмоциональная поддержка */
+.page58 .support-content {
+  @apply space-y-6 max-w-4xl mx-auto;
+}
+
+.page58 .warning-note {
+  @apply bg-red-50 border border-red-200 rounded-lg p-6;
+}
+
+.page58 .warning-note h3 {
+  @apply font-bold text-red-800 mb-3;
+}
+
+.page58 .warning-note p {
+  @apply text-red-700;
+}
+
+.page58 .respect-note {
+  @apply bg-green-50 border border-green-200 rounded-lg p-6;
+}
+
+.page58 .respect-note h3 {
+  @apply font-bold text-green-800 mb-3;
+}
+
+.page58 .respect-note p {
+  @apply text-green-700;
+}
+
+.page58 .preservation-note {
+  @apply bg-blue-50 border border-blue-200 rounded-lg p-6;
+}
+
+.page58 .preservation-note h3 {
+  @apply font-bold text-blue-800 mb-3;
+}
+
+.page58 .preservation-note p {
+  @apply text-blue-700;
+}
+
+/* Дань уважения */
+.page58 .tribute-section {
+  @apply bg-gradient-to-br from-primary/10 to-muted/10 border-l-4 border-primary p-8 rounded-lg text-center;
+}
+
+.page58 .tribute-content p {
+  @apply text-lg text-muted-foreground mb-8 max-w-3xl mx-auto;
+}
+
+.page58 .testimony-stats {
+  @apply flex justify-center gap-8 mb-8 flex-wrap;
+}
+
+.page58 .testimony-stats .stat {
+  @apply text-center;
+}
+
+.page58 .testimony-stats .number {
+  @apply block text-3xl font-bold text-primary mb-2;
+}
+
+.page58 .testimony-stats .label {
+  @apply text-sm text-muted-foreground;
+}
+
+.page58 .final-quote {
+  @apply text-xl font-serif italic text-foreground max-w-3xl mx-auto;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .page58 .main-title {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  .page58 .now-playing {
+    @apply flex-col gap-4 text-center;
+  }
+  
+  .page58 .audio-controls {
+    @apply flex-col gap-3;
+  }
+  
+  .page58 .testimonies-grid {
+    @apply grid-cols-1;
+  }
+  
+  .page58 .listening-options,
+  .page58 .video-grid {
+    @apply grid-cols-1;
+  }
+  
+  .page58 .testimony-stats {
+    @apply flex-col gap-4;
+  }
+  
+  .page58 .moments-list {
+    @apply flex-col;
+  }
+}

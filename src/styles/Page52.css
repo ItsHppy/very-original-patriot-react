@@ -1,0 +1,942 @@
+.page52 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #3d3d3d 100%);
+  color: #e0e0e0;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 3.5rem;
+  color: #dc143c;
+  margin-bottom: 2rem;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.header-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.header-stats .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(220, 20, 60, 0.15);
+  border-radius: 15px;
+  border: 2px solid rgba(220, 20, 60, 0.3);
+  min-width: 250px;
+}
+
+.header-stats .number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #dc143c;
+  margin-bottom: 1rem;
+}
+
+.header-stats .label {
+  font-size: 1.1rem;
+  color: #ff6b6b;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.content-grid {
+  display: grid;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Карта лагерей */
+.camps-map-section {
+  background: rgba(61, 61, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.camps-map-section h2 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.map-controls {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-controls label {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.filter-controls select {
+  padding: 0.8rem 1.2rem;
+  border: 2px solid rgba(220, 20, 60, 0.3);
+  border-radius: 8px;
+  background: rgba(60, 60, 60, 0.8);
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+.filter-controls select:focus {
+  outline: none;
+  border-color: #dc143c;
+}
+
+.map-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.belarus-camps-map {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid #dc143c;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.base-map {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  filter: grayscale(0.8) contrast(1.2) brightness(0.6);
+}
+
+.camp-marker {
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.camp-marker:hover,
+.camp-marker.selected {
+  transform: scale(1.2);
+  z-index: 20;
+}
+
+.marker-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid white;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.camp-marker.death .marker-dot {
+  background: #8b0000;
+}
+
+.camp-marker.concentration .marker-dot {
+  background: #dc143c;
+}
+
+.camp-marker.labor .marker-dot {
+  background: #ff4500;
+}
+
+.camp-marker.transit .marker-dot {
+  background: #ff6347;
+}
+
+.camp-marker:hover .marker-dot,
+.camp-marker.selected .marker-dot {
+  box-shadow: 0 0 20px currentColor;
+  transform: scale(1.5);
+}
+
+.camp-label {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: bold;
+}
+
+.victims-count {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(220, 20, 60, 0.9);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: bold;
+}
+
+.camp-marker:hover .camp-label,
+.camp-marker:hover .victims-count,
+.camp-marker.selected .camp-label,
+.camp-marker.selected .victims-count {
+  opacity: 1;
+}
+
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.map-legend h4 {
+  color: #dc143c;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 2px solid white;
+}
+
+.legend-text {
+  color: white;
+}
+
+.camp-details {
+  background: rgba(60, 60, 60, 0.9);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 2px solid rgba(220, 20, 60, 0.4);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.camp-info h3 {
+  color: #dc143c;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.camp-basic-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-row {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  color: #e0e0e0;
+}
+
+.info-row strong {
+  color: #ff6b6b;
+}
+
+.victims {
+  color: #dc143c;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.camp-description {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(220, 20, 60, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #dc143c;
+  font-size: 1.1rem;
+}
+
+.camp-detailed-info {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail-item {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  color: #e0e0e0;
+}
+
+.detail-item.notable {
+  border-left: 4px solid #dc143c;
+  background: rgba(220, 20, 60, 0.1);
+}
+
+.detail-item strong {
+  color: #ff6b6b;
+}
+
+/* Типы лагерей */
+.camp-types-section {
+  background: rgba(61, 61, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.camp-types-section h2 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.type-card {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(220, 20, 60, 0.2);
+  transition: all 0.3s ease;
+}
+
+.type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.type-header {
+  padding: 1.5rem;
+  border-top: 4px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.type-header h3 {
+  color: #dc143c;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.type-count {
+  background: rgba(220, 20, 60, 0.2);
+  color: #ff6b6b;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.type-content {
+  padding: 1.5rem;
+}
+
+.type-victims {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+}
+
+.victims-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #dc143c;
+  margin-bottom: 0.5rem;
+}
+
+.victims-label {
+  color: #ff6b6b;
+  font-size: 1rem;
+}
+
+.type-purpose p {
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.type-purpose strong {
+  color: #ff6b6b;
+}
+
+/* Условия содержания */
+.conditions-section {
+  background: rgba(61, 61, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.conditions-section h2 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.conditions-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.condition-category {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-top: 4px solid #dc143c;
+}
+
+.condition-category h3 {
+  color: #dc143c;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.condition-category ul {
+  color: #e0e0e0;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.condition-category li {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.condition-category li::marker {
+  color: #dc143c;
+}
+
+.survival-statistics {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.survival-statistics h3 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.survival-bars {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.survival-bar {
+  display: grid;
+  grid-template-columns: 150px 1fr 60px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar-label {
+  color: #e0e0e0;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.bar-container {
+  position: relative;
+  height: 25px;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 12px;
+  transition: width 2s ease;
+}
+
+.bar-fill.death {
+  background: linear-gradient(90deg, #8b0000, #dc143c);
+}
+
+.bar-fill.concentration {
+  background: linear-gradient(90deg, #dc143c, #ff6b6b);
+}
+
+.bar-fill.labor {
+  background: linear-gradient(90deg, #ff4500, #ff6347);
+}
+
+.bar-fill.transit {
+  background: linear-gradient(90deg, #ff6347, #ff7f7f);
+}
+
+.bar-percent {
+  color: #e0e0e0;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Освобождение */
+.liberation-section {
+  background: rgba(61, 61, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.liberation-section h2 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.liberation-intro {
+  background: rgba(220, 20, 60, 0.1);
+  border: 2px solid rgba(220, 20, 60, 0.3);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.liberation-intro p {
+  color: #ff6b6b;
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.liberation-stories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.liberation-card {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  border-left: 4px solid #dc143c;
+  transition: all 0.3s ease;
+}
+
+.liberation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.liberation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.liberation-header h3 {
+  color: #dc143c;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.liberation-date {
+  background: rgba(220, 20, 60, 0.2);
+  color: #ff6b6b;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.liberation-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail-row {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  color: #e0e0e0;
+}
+
+.detail-row.survivors {
+  border-left: 4px solid #4caf50;
+}
+
+.detail-row strong {
+  color: #ff6b6b;
+}
+
+.liberation-impact {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.liberation-impact h3 {
+  color: #dc143c;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.liberation-impact blockquote {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: rgba(220, 20, 60, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #dc143c;
+}
+
+.liberation-impact cite {
+  color: #ff6b6b;
+  font-size: 1rem;
+}
+
+/* Улики */
+.evidence-section {
+  background: rgba(61, 61, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.evidence-section h2 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.evidence-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.evidence-card {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-top: 4px solid #dc143c;
+  transition: all 0.3s ease;
+}
+
+.evidence-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.evidence-card h3 {
+  color: #dc143c;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.evidence-card ul {
+  color: #e0e0e0;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.evidence-card li {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.evidence-card li::marker {
+  color: #dc143c;
+}
+
+/* Современное состояние */
+.modern-state-section {
+  background: rgba(61, 61, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.modern-state-section h2 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.sites-status {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.status-category {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-top: 4px solid #dc143c;
+}
+
+.status-category h3 {
+  color: #dc143c;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.sites-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.site-item {
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.site-item.memorial {
+  background: rgba(76, 175, 80, 0.1);
+  border-left-color: #4caf50;
+  color: #81c784;
+}
+
+.site-item.forgotten {
+  background: rgba(255, 152, 0, 0.1);
+  border-left-color: #ff9800;
+  color: #ffb74d;
+}
+
+.site-item.research {
+  background: rgba(33, 150, 243, 0.1);
+  border-left-color: #2196f3;
+  color: #64b5f6;
+}
+
+.site-item strong {
+  color: inherit;
+  font-weight: bold;
+}
+
+/* Размышления */
+.reflection-section {
+  background: rgba(61, 61, 61, 0.8);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.reflection-section h2 {
+  color: #dc143c;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.reflection-content blockquote {
+  font-size: 1.4rem;
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(220, 20, 60, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #dc143c;
+}
+
+.never-again {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.never-again h3 {
+  color: #dc143c;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.never-again p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .page52 {
+    padding: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .header-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-stats .stat {
+    min-width: auto;
+  }
+
+  .map-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .types-grid,
+  .conditions-tabs,
+  .liberation-stories,
+  .evidence-types,
+  .sites-status {
+    grid-template-columns: 1fr;
+  }
+
+  .camp-basic-info {
+    grid-template-columns: 1fr;
+  }
+
+  .survival-bar {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .liberation-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+/* Навигация между страницами */
+.page-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 60, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(100, 100, 150, 0.4);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #6c63ff, #74c0fc);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  background: linear-gradient(135deg, #74c0fc, #a5d6ff);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #a5d6ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .page-navigation {
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .page-info {
+    font-size: 1rem;
+  }
+}

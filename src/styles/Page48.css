@@ -1,0 +1,927 @@
+.page48 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0f0f 0%, #2d1616 50%, #3d1e1e 100%);
+  color: #e0e0e0;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 3.5rem;
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.age-selector {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.age-selector label {
+  color: #ff9999;
+  font-weight: bold;
+}
+
+.age-selector select {
+  padding: 0.5rem 1rem;
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  background: rgba(60, 60, 60, 0.8);
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+.age-warning {
+  background: rgba(255, 107, 107, 0.2);
+  border: 3px solid rgba(255, 107, 107, 0.5);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.age-warning.child {
+  border-color: #ff4757;
+  background: rgba(255, 71, 87, 0.3);
+  animation: warning-pulse 2s infinite;
+}
+
+@keyframes warning-pulse {
+  0%, 100% { border-color: #ff4757; }
+  50% { border-color: #ff6b6b; }
+}
+
+.age-warning h3 {
+  color: #ff4757;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.age-warning p {
+  color: #ffcccc;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.horror-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.horror-stats .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 15px;
+  border: 3px solid rgba(255, 107, 107, 0.4);
+  min-width: 250px;
+}
+
+.horror-stats .number {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #ff4757;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.horror-stats .label {
+  font-size: 1.1rem;
+  color: #ffcccc;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.content-grid {
+  display: grid;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Выбор лагеря */
+.camp-selector {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.camp-selector h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.camp-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.camp-tab {
+  background: rgba(60, 60, 60, 0.8);
+  color: #e0e0e0;
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.camp-tab:hover {
+  border-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.camp-tab.active {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: #ff4757;
+  color: #ffcccc;
+}
+
+.camp-info {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.camp-info h3 {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.camp-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+  color: #e0e0e0;
+}
+
+.mortality {
+  color: #ff4757;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Процедура забора крови */
+.blood-donation-section {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.blood-donation-section h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.procedure-steps {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.procedure-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  border-left: 4px solid #ff4757;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ff4757, #ff6b6b);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.step-description {
+  color: #e0e0e0;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.medical-horror {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.medical-horror h3 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.medical-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.medical-fact {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid rgba(255, 107, 107, 0.2);
+}
+
+.medical-fact.horror {
+  border-color: #ff4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.medical-fact h4 {
+  color: #ff9999;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.medical-fact p {
+  color: #e0e0e0;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.medical-fact.horror p {
+  color: #ff4757;
+  font-weight: bold;
+}
+
+/* Эксперименты */
+.experiments-section {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.experiments-section h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.warning-disclaimer {
+  background: rgba(255, 71, 87, 0.15);
+  border: 2px solid rgba(255, 71, 87, 0.4);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.warning-disclaimer p {
+  color: #ff4757;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.experiments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.experiment-card {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  transition: all 0.3s ease;
+}
+
+.experiment-card:hover {
+  border-color: #ff4757;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.experiment-card h3 {
+  color: #ff4757;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.experiment-description {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.experiment-stats {
+  display: grid;
+  gap: 1rem;
+}
+
+.experiment-stats div {
+  padding: 0.8rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 6px;
+  color: #e0e0e0;
+}
+
+.survival {
+  color: #ff4757;
+  font-weight: bold;
+}
+
+.nuremberg-note {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.nuremberg-note h3 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.nuremberg-note p {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Условия содержания */
+.living-conditions-section {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.living-conditions-section h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.condition-item {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+}
+
+.condition-item h4 {
+  color: #ff9999;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.condition-item p {
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.starvation-photos {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.starvation-photos h3 {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.photos-warning {
+  background: rgba(255, 71, 87, 0.15);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.photos-warning p {
+  color: #ff4757;
+  margin: 0;
+  font-weight: bold;
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.photo-item {
+  text-align: center;
+}
+
+.photo-placeholder {
+  background: rgba(40, 40, 40, 0.8);
+  border: 2px dashed rgba(255, 107, 107, 0.5);
+  border-radius: 10px;
+  padding: 3rem 1rem;
+  color: #ff9999;
+  font-style: italic;
+}
+
+.photo-placeholder.large {
+  padding: 4rem 2rem;
+  font-size: 1.2rem;
+}
+
+.photo-placeholder span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ff6b6b;
+}
+
+.photo-placeholder p {
+  color: #b0b0b0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Истории детей */
+.children-stories {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.children-stories h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.story-card {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  border-left: 4px solid #ff4757;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.child-info {
+  margin-bottom: 1.5rem;
+}
+
+.child-info h3 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.child-details {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: #ff9999;
+  font-size: 0.9rem;
+}
+
+.story-content {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.story-content p {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+
+.story-fate {
+  background: rgba(255, 71, 87, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  color: #ff9999;
+}
+
+/* Мемориал */
+.memorial-section {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.memorial-section h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.memorial-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  align-items: start;
+}
+
+.memorial-details {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.memorial-details h3 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.memorial-details h4 {
+  color: #ff9999;
+  margin: 1.5rem 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.memorial-details ul {
+  color: #e0e0e0;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.memorial-details li {
+  margin-bottom: 0.5rem;
+}
+
+.memorial-photo {
+  display: flex;
+  align-items: center;
+}
+
+.memorial-inscription {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.memorial-inscription blockquote {
+  font-size: 1.6rem;
+  color: #ff6b6b;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.memorial-inscription cite {
+  color: #ff9999;
+  font-size: 1rem;
+}
+
+.memorial-mission {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.memorial-mission h3 {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.memorial-mission p {
+  color: #e0e0e0;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Список имен */
+.names-section {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.names-section h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.names-disclaimer {
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.names-disclaimer p {
+  color: #ff9999;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.names-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.names-column {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-top: 4px solid #ff4757;
+}
+
+.names-column h4 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.names-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.name-item {
+  padding: 1rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+  border-left: 3px solid #ff4757;
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.name-item:hover {
+  background: rgba(255, 71, 87, 0.1);
+  transform: translateX(5px);
+}
+
+.unknown-children {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+}
+
+.unknown-text {
+  color: #ff9999;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.memory-text {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Размышления */
+.reflection-section {
+  background: rgba(45, 25, 25, 0.9);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.reflection-section h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.reflection-content blockquote {
+  font-size: 1.4rem;
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 107, 107, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.child-protection {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.child-protection h3 {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.child-protection p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .page48 {
+    padding: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .horror-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .horror-stats .stat {
+    min-width: auto;
+  }
+
+  .camp-tabs {
+    flex-direction: column;
+  }
+
+  .memorial-info,
+  .names-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .conditions-grid,
+  .experiments-grid,
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .procedure-steps {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .medical-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Навигация между страницами */
+.page-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 60, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(100, 100, 150, 0.4);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #6c63ff, #74c0fc);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  background: linear-gradient(135deg, #74c0fc, #a5d6ff);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #a5d6ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .page-navigation {
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .page-info {
+    font-size: 1rem;
+  }
+}

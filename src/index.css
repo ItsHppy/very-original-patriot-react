@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Memorial dark theme - inspired by war documents and archives */
+    --background: 0 0% 7%;
+    --foreground: 30 20% 88%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 30 20% 88%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 30 20% 88%;
+
+    /* Victory red accent */
+    --primary: 0 72% 51%;
+    --primary-foreground: 30 20% 95%;
+
+    /* Sepia/vintage tones */
+    --secondary: 35 30% 25%;
+    --secondary-foreground: 30 20% 88%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 30 15% 55%;
+
+    /* Gold accent for honors/medals */
+    --accent: 45 80% 55%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 30 20% 95%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 18%;
+    --ring: 0 72% 51%;
+
+    --radius: 0.3rem;
+
+    /* Custom memorial colors */
+    --vintage-paper: 35 35% 85%;
+    --vintage-dark: 35 20% 20%;
+    --memorial-flame: 15 90% 55%;
+    --honor-gold: 45 85% 60%;
+    --archive-sepia: 35 40% 45%;
+    
+    /* Gradients */
+    --gradient-memorial: linear-gradient(135deg, hsl(0 0% 5%), hsl(0 0% 12%));
+    --gradient-victory: linear-gradient(135deg, hsl(0 72% 35%), hsl(0 72% 51%));
+    --gradient-paper: linear-gradient(180deg, hsl(35 35% 85%), hsl(35 30% 75%));
+    
+    /* Shadows */
+    --shadow-deep: 0 20px 60px -15px hsl(0 0% 0% / 0.5);
+    --shadow-glow-red: 0 0 40px hsl(0 72% 51% / 0.3);
+    --shadow-text: 2px 2px 4px hsl(0 0% 0% / 0.8);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-page: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Memorial typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* Page turn effect */
+  @keyframes page-turn {
+    0% {
+      transform: perspective(2000px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(2000px) rotateY(-180deg);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  .page-turn-animation {
+    animation: page-turn 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .memorial-glow {
+    text-shadow: 0 0 20px hsl(var(--memorial-flame) / 0.5);
+  }
+
+  /* Paper texture effect */
+  .paper-texture {
+    background-image: 
+      linear-gradient(to bottom, transparent 0%, hsl(35 20% 15% / 0.05) 100%),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        hsl(35 30% 80% / 0.03) 2px,
+        hsl(35 30% 80% / 0.03) 4px
+      );
+  }
+
+  /* Vintage book edge */
+  .book-edge {
+    box-shadow: 
+      inset 0 0 20px hsl(0 0% 0% / 0.3),
+      inset 0 0 5px hsl(35 30% 40% / 0.5),
+      2px 2px 10px hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

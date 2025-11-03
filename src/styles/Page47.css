@@ -1,0 +1,976 @@
+.page47 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2c1810 0%, #4a2c17 50%, #6b3e07 100%);
+  color: #e0e0e0;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 3.5rem;
+  color: #d2691e;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.main-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(210, 105, 30, 0.15);
+  border-radius: 15px;
+  border: 2px solid rgba(210, 105, 30, 0.3);
+  min-width: 250px;
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #d2691e;
+  margin-bottom: 1rem;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.content-grid {
+  display: grid;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Карта депортации */
+.deportation-map-section {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.deportation-map-section h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.map-container {
+  position: relative;
+}
+
+.deportation-map {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 2px solid #d2691e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.base-map {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  filter: sepia(0.3) contrast(1.1) brightness(0.8);
+}
+
+.belarus-region {
+  position: absolute;
+  top: 35%;
+  right: 25%;
+  background: rgba(210, 105, 30, 0.8);
+  border: 2px solid #d2691e;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.region-label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.population-indicator {
+  font-size: 0.9rem;
+  color: #ffcccb;
+}
+
+.route-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.route-line {
+  position: absolute;
+  border-top: 3px dashed #d2691e;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.route-line.active {
+  border-color: #ff6b6b;
+  opacity: 1;
+  border-width: 4px;
+  animation: route-pulse 2s infinite;
+}
+
+@keyframes route-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.destination-point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #d2691e;
+  border-radius: 50%;
+  border: 3px solid white;
+  cursor: pointer;
+  pointer-events: all;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.destination-point:hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background: #ff6b6b;
+  box-shadow: 0 0 20px rgba(210, 105, 30, 0.8);
+}
+
+.destination-name {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.people-count {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(210, 105, 30, 0.9);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.destination-point:hover .destination-name,
+.destination-point:hover .people-count {
+  opacity: 1;
+}
+
+.route-details {
+  background: rgba(60, 60, 60, 0.9);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.route-info h3 {
+  color: #d2691e;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.route-stats {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.route-stats div {
+  color: #e0e0e0;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+}
+
+/* Методы отбора */
+.selection-methods {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.selection-methods h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.method-card {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(210, 105, 30, 0.2);
+  transition: all 0.3s ease;
+}
+
+.method-card:hover {
+  transform: translateY(-5px);
+  border-color: #d2691e;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.method-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.method-card h3 {
+  color: #d2691e;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.method-description {
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.quota-info {
+  background: rgba(210, 105, 30, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #d2691e;
+  color: #e0e0e0;
+}
+
+.selection-process {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.selection-process h3 {
+  color: #d2691e;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.process-steps {
+  display: grid;
+  gap: 1rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+  border-left: 4px solid #d2691e;
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  background: #d2691e;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step-text {
+  color: #e0e0e0;
+}
+
+/* Условия труда */
+.work-conditions-section {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.work-conditions-section h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.conditions-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.condition-tab {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  border-top: 4px solid #d2691e;
+}
+
+.condition-tab h3 {
+  color: #d2691e;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.condition-details ul {
+  color: #e0e0e0;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.condition-details li {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.condition-details li::marker {
+  color: #d2691e;
+}
+
+.mortality-rate {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.mortality-rate .rate {
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+.daily-routine {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.daily-routine h3 {
+  color: #d2691e;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.routine-timeline {
+  display: grid;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.routine-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+}
+
+.routine-item .time {
+  flex: 0 0 80px;
+  background: #d2691e;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.routine-item .activity {
+  color: #e0e0e0;
+}
+
+/* Письма домой */
+.letters-section {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.letters-section h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.letters-controls {
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+  border: 2px solid rgba(210, 105, 30, 0.3);
+  border-radius: 8px;
+  background: rgba(60, 60, 60, 0.8);
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #d2691e;
+}
+
+.censorship-note {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.censorship-note p {
+  color: #ff9999;
+  margin: 0;
+}
+
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.letter-card {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.letter-card.delivered {
+  border-color: rgba(46, 204, 113, 0.5);
+  background: rgba(46, 204, 113, 0.05);
+}
+
+.letter-card.censored {
+  border-color: rgba(255, 107, 107, 0.5);
+  background: rgba(255, 107, 107, 0.05);
+}
+
+.letter-header {
+  margin-bottom: 1.5rem;
+}
+
+.letter-header h3 {
+  color: #d2691e;
+  margin-bottom: 0.5rem;
+}
+
+.letter-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.letter-content {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #d2691e;
+  margin-bottom: 1.5rem;
+}
+
+.letter-content p {
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.letter-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.status-indicator.delivered {
+  color: #2ecc71;
+}
+
+.status-indicator.censored {
+  color: #ff6b6b;
+}
+
+.status-note {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Судьба после войны */
+.postwar-fate {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.postwar-fate h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.fate-warning {
+  background: rgba(255, 107, 107, 0.1);
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.fate-warning h3 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.fate-warning p {
+  color: #ff9999;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.fate-stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.fate-stage {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  border-left: 4px solid #ff6b6b;
+}
+
+.stage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.stage-header h3 {
+  color: #ff6b6b;
+  margin: 0;
+}
+
+.percentage {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff9999;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.fate-stage p {
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.duration {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.filtration-process {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.filtration-process h3 {
+  color: #d2691e;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.filtration-process p {
+  color: #e0e0e0;
+  line-height: 1.7;
+}
+
+/* Истории выживших */
+.survivor-stories {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.survivor-stories h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.story-card {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  border-top: 4px solid #d2691e;
+}
+
+.survivor-info {
+  margin-bottom: 2rem;
+}
+
+.survivor-info h3 {
+  color: #d2691e;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.survivor-details {
+  display: grid;
+  gap: 0.5rem;
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.story-content,
+.postwar-life {
+  margin-bottom: 2rem;
+}
+
+.story-content h4,
+.postwar-life h4 {
+  color: #d2691e;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.story-content p,
+.postwar-life p {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* База данных */
+.database-section {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+}
+
+.database-section h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.database-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.db-stat {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  border: 2px solid rgba(210, 105, 30, 0.3);
+}
+
+.db-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d2691e;
+  margin-bottom: 0.5rem;
+}
+
+.db-label {
+  color: #b0b0b0;
+  font-size: 1rem;
+}
+
+.search-your-relative {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.search-your-relative h3 {
+  color: #d2691e;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.search-your-relative p {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.search-resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.resource {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #d2691e;
+}
+
+.resource h4 {
+  color: #d2691e;
+  margin-bottom: 0.8rem;
+}
+
+.resource p {
+  color: #b0b0b0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Память */
+.memory-section {
+  background: rgba(76, 44, 23, 0.8);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 1px solid rgba(210, 105, 30, 0.3);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.memory-section h2 {
+  color: #d2691e;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.memory-content blockquote {
+  font-size: 1.4rem;
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  background: rgba(210, 105, 30, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #d2691e;
+}
+
+.memory-content cite {
+  color: #d2691e;
+  font-size: 1.1rem;
+}
+
+.recognition {
+  margin-top: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recognition h3 {
+  color: #d2691e;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.recognition p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .page47 {
+    padding: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .main-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    min-width: auto;
+  }
+
+  .database-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .methods-grid,
+  .conditions-tabs,
+  .letters-grid,
+  .fate-stages,
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .route-details {
+    margin-top: 1rem;
+  }
+
+  .letter-status {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* Навигация между страницами */
+.page-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 60, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(100, 100, 150, 0.4);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #6c63ff, #74c0fc);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  background: linear-gradient(135deg, #74c0fc, #a5d6ff);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #a5d6ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .page-navigation {
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .page-info {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,1044 @@
+.page49 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a4c2e 0%, #2d5a3d 50%, #3d6b4c 100%);
+  color: #e0e0e0;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 3.5rem;
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.header-subtitle {
+  margin-bottom: 2rem;
+}
+
+.header-subtitle p {
+  font-size: 1.3rem;
+  color: #81c784;
+  font-style: italic;
+  margin: 0;
+}
+
+.main-stats {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.stat-circle {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
+  border: 4px solid rgba(76, 175, 80, 0.4);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: gentle-glow 3s ease-in-out infinite;
+}
+
+@keyframes gentle-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(76, 175, 80, 0.5); }
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+
+.stat-label {
+  font-size: 1.2rem;
+  color: #81c784;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 200px;
+}
+
+.content-grid {
+  display: grid;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* География героизма */
+.regions-stats {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.regions-stats h2 {
+  color: #4caf50;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.regions-map {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: url('/images/belarus-map-outline.svg') center/contain no-repeat;
+  margin-bottom: 3rem;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  border-radius: 10px;
+  background-color: rgba(60, 60, 60, 0.3);
+}
+
+.region-stat {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.region-stat:hover {
+  transform: scale(1.1);
+}
+
+.region-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.region-circle.minsk {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+}
+
+.region-circle.vitebsk {
+  background: linear-gradient(135deg, #81c784, #a5d6a7);
+}
+
+.region-circle.gomel {
+  background: linear-gradient(135deg, #2e7d32, #4caf50);
+}
+
+.region-circle.grodno {
+  background: linear-gradient(135deg, #388e3c, #66bb6a);
+}
+
+.region-circle.brest {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+}
+
+.region-number {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.region-name {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.stats-breakdown {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.breakdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 12px;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.breakdown-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+}
+
+.breakdown-label {
+  font-size: 1rem;
+  color: #81c784;
+  text-align: center;
+}
+
+/* Типы спасения */
+.rescue-types {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.rescue-types h2 {
+  color: #4caf50;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.type-card {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  transition: all 0.3s ease;
+}
+
+.type-card:hover {
+  transform: translateY(-5px);
+  border-color: #4caf50;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.type-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.type-card h3 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.type-description {
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.type-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail-item {
+  background: rgba(40, 40, 40, 0.8);
+  padding: 0.8rem;
+  border-radius: 6px;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+.detail-item strong {
+  color: #81c784;
+}
+
+/* Поиск героев */
+.heroes-search {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.heroes-search h2 {
+  color: #4caf50;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.search-controls {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  border-radius: 25px;
+  background: rgba(60, 60, 60, 0.8);
+  color: #e0e0e0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+.heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.hero-card {
+  background: rgba(60, 60, 60, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(76, 175, 80, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-card:hover,
+.hero-card.expanded {
+  border-color: #4caf50;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.hero-photo {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.2) contrast(1.1);
+}
+
+.hero-year {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(76, 175, 80, 0.9);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.hero-info {
+  padding: 1.5rem;
+}
+
+.hero-info h3 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.hero-location,
+.hero-saved {
+  color: #81c784;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.hero-details {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.hero-details h4 {
+  color: #4caf50;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.hero-details p {
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.hero-story {
+  background: rgba(40, 40, 40, 0.6);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #4caf50;
+  margin-bottom: 1rem;
+}
+
+.hero-risk {
+  background: rgba(255, 193, 7, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  margin-bottom: 1rem;
+}
+
+.hero-outcome {
+  background: rgba(76, 175, 80, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #4caf50;
+}
+
+.expand-indicator {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(40, 40, 40, 0.6);
+  color: #81c784;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.hero-card:hover .expand-indicator {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+/* Риски */
+.risks-section {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.risks-section h2 {
+  color: #ffc107;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.risks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.risk-card {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #ff5722;
+  text-align: center;
+}
+
+.risk-card h3 {
+  color: #ff5722;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.risk-cases {
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.risk-example {
+  background: rgba(255, 87, 34, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  color: #ffab91;
+  font-size: 0.9rem;
+}
+
+.risk-statistics {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.risk-statistics h3 {
+  color: #ffc107;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.risk-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.risk-stat {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 87, 34, 0.1);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 87, 34, 0.3);
+}
+
+.risk-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff5722;
+  margin-bottom: 0.5rem;
+}
+
+.risk-label {
+  color: #ffab91;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Моральные дилеммы */
+.moral-dilemmas {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+.moral-dilemmas h2 {
+  color: #9c27b0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.dilemmas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.dilemma-card {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-top: 4px solid #9c27b0;
+}
+
+.dilemma-card h3 {
+  color: #9c27b0;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.dilemma-question,
+.dilemma-choice,
+.dilemma-consequence {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.dilemma-question {
+  background: rgba(156, 39, 176, 0.1);
+  border-left: 3px solid #9c27b0;
+}
+
+.dilemma-choice {
+  background: rgba(76, 175, 80, 0.1);
+  border-left: 3px solid #4caf50;
+}
+
+.dilemma-consequence {
+  background: rgba(255, 193, 7, 0.1);
+  border-left: 3px solid #ffc107;
+}
+
+.dilemma-question strong {
+  color: #ce93d8;
+}
+
+.dilemma-choice strong {
+  color: #81c784;
+}
+
+.dilemma-consequence strong {
+  color: #ffcc02;
+}
+
+.moral-reflection {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.moral-reflection h3 {
+  color: #9c27b0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.moral-reflection blockquote {
+  font-size: 1.3rem;
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: rgba(156, 39, 176, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #9c27b0;
+}
+
+.moral-reflection cite {
+  color: #ce93d8;
+  font-size: 1rem;
+}
+
+/* Спасенные дети */
+.saved-children {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.saved-children h2 {
+  color: #ff9800;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.children-intro {
+  background: rgba(255, 152, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.children-intro p {
+  color: #ffcc02;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.children-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.child-story-card {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #ff9800;
+}
+
+.child-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.child-header h3 {
+  color: #ff9800;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.child-age {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffcc02;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.rescuer-info {
+  color: #81c784;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.child-story {
+  background: rgba(40, 40, 40, 0.6);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.child-story p {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+
+.child-postwar {
+  background: rgba(255, 152, 0, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  color: #ffcc02;
+}
+
+/* Яд ва-Шем */
+.yad-vashem-section {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.yad-vashem-section h2 {
+  color: #2196f3;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.yad-vashem-info {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.yad-vashem-info h3 {
+  color: #2196f3;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.yad-vashem-info p {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.criteria {
+  background: rgba(33, 150, 243, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.criteria h4 {
+  color: #64b5f6;
+  margin-bottom: 1rem;
+}
+
+.criteria ul {
+  color: #e0e0e0;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.criteria li {
+  margin-bottom: 0.5rem;
+}
+
+.recognition-process {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.recognition-process h3 {
+  color: #2196f3;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.process-steps {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.step-number {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(135deg, #2196f3, #64b5f6);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step-text {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.medal-info {
+  background: rgba(60, 60, 60, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.medal-info h3 {
+  color: #2196f3;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.medal-description {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.medal-image {
+  text-align: center;
+}
+
+.medal-placeholder {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.medal-placeholder span {
+  color: #b8860b;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.medal-text p {
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.medal-text strong {
+  color: #64b5f6;
+}
+
+/* Наследие */
+.legacy-section {
+  background: rgba(45, 90, 61, 0.8);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.legacy-section h2 {
+  color: #4caf50;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.legacy-content blockquote {
+  font-size: 1.4rem;
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(76, 175, 80, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #4caf50;
+}
+
+.modern-relevance,
+.memory-preservation {
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modern-relevance h3,
+.memory-preservation h3 {
+  color: #4caf50;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.modern-relevance p,
+.memory-preservation p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .page49 {
+    padding: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .stat-circle {
+    width: 250px;
+    height: 250px;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .regions-map {
+    height: 300px;
+  }
+
+  .region-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .region-number {
+    font-size: 1.2rem;
+  }
+
+  .region-name {
+    font-size: 0.6rem;
+  }
+
+  .stats-breakdown {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .types-grid,
+  .heroes-grid,
+  .risks-grid,
+  .dilemmas-grid,
+  .children-stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .risk-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .medal-description {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .process-steps {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-card {
+    margin-bottom: 1rem;
+  }
+}
+/* Навигация между страницами */
+.page-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 60, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(100, 100, 150, 0.4);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #6c63ff, #74c0fc);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  background: linear-gradient(135deg, #74c0fc, #a5d6ff);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #a5d6ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .page-navigation {
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .page-info {
+    font-size: 1rem;
+  }
+}

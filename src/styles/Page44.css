@@ -1,0 +1,786 @@
+.page44 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d1421 0%, #1a2332 50%, #2d3f56 100%);
+  color: #e0e0e0;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 3.5rem;
+  color: #4dabf7;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.stats-banner {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.stats-banner .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(77, 171, 247, 0.15);
+  border-radius: 12px;
+  border: 2px solid rgba(77, 171, 247, 0.3);
+}
+
+.stats-banner .number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #4dabf7;
+  margin-bottom: 0.5rem;
+}
+
+.stats-banner .label {
+  font-size: 1rem;
+  color: #b0b0b0;
+  text-align: center;
+}
+
+.content-grid {
+  display: grid;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Секция маршрутов побегов */
+.escape-routes-section {
+  background: rgba(26, 35, 50, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.escape-routes-section h2 {
+  color: #4dabf7;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.map-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.escape-map {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid #4dabf7;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.base-map {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: sepia(0.2) contrast(1.1) brightness(0.8);
+}
+
+.ghetto-area {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 80px;
+  height: 60px;
+  background: rgba(255, 107, 107, 0.6);
+  border: 2px solid #ff6b6b;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forest-area {
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 100px;
+  height: 80px;
+  background: rgba(51, 154, 51, 0.6);
+  border: 2px solid #339a33;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.area-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.route-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.route-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.animated-route {
+  animation: route-animation 3s ease-in-out;
+}
+
+@keyframes route-animation {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.route-point {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #d4a574;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  pointer-events: all;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.route-point:hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background: #4dabf7;
+  box-shadow: 0 0 15px rgba(77, 171, 247, 0.8);
+}
+
+.map-controls {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.animate-btn {
+  background: linear-gradient(135deg, #4dabf7, #74c0fc);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.animate-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 171, 247, 0.4);
+}
+
+.animate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.routes-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.route-card {
+  background: rgba(45, 63, 86, 0.8);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid rgba(77, 171, 247, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.route-card:hover,
+.route-card.active {
+  border-color: #4dabf7;
+  background: rgba(77, 171, 247, 0.1);
+  transform: translateY(-3px);
+}
+
+.route-card h3 {
+  color: #4dabf7;
+  margin-bottom: 1rem;
+}
+
+.route-stats {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.route-stats div {
+  margin-bottom: 0.5rem;
+  color: #b0b0b0;
+}
+
+/* Руководители подполья */
+.leaders-section {
+  background: rgba(26, 35, 50, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.leaders-section h2 {
+  color: #4dabf7;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.leader-card {
+  display: flex;
+  background: rgba(45, 63, 86, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(77, 171, 247, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.leader-photo {
+  flex: 0 0 120px;
+  overflow: hidden;
+}
+
+.leader-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.3) contrast(1.1);
+}
+
+.leader-info {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.leader-info h3 {
+  color: #4dabf7;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.leader-info h4 {
+  color: #d4a574;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.description {
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.fate {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  background: rgba(20, 20, 20, 0.5);
+  border-radius: 6px;
+  border-left: 3px solid #d4a574;
+}
+
+/* Методы сопротивления */
+.methods-section {
+  background: rgba(26, 35, 50, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.methods-section h2 {
+  color: #4dabf7;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.method-card {
+  background: rgba(45, 63, 86, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(77, 171, 247, 0.2);
+  transition: all 0.3s ease;
+}
+
+.method-card:hover {
+  transform: translateY(-5px);
+  border-color: #4dabf7;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.method-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.method-card h3 {
+  color: #4dabf7;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.method-card p {
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+/* Связи с партизанами */
+.partisan-section {
+  background: rgba(26, 35, 50, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.partisan-section h2 {
+  color: #4dabf7;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.connection-network {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 2rem auto;
+}
+
+.network-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.ghetto-node {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.partisan-nodes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.partisan-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.node-content {
+  background: rgba(45, 63, 86, 0.9);
+  border: 2px solid #4dabf7;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 180px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.node-content h4 {
+  color: #4dabf7;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.node-content p {
+  color: #b0b0b0;
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.connection-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.animated-line {
+  animation: line-pulse 2s ease-in-out infinite;
+}
+
+@keyframes line-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 3;
+  }
+}
+
+/* Истории побегов */
+.escape-stories {
+  background: rgba(26, 35, 50, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.escape-stories h2 {
+  color: #4dabf7;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.story-card {
+  background: rgba(45, 63, 86, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #4dabf7;
+  transition: transform 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.story-card h3 {
+  color: #4dabf7;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.story-details {
+  background: rgba(20, 20, 20, 0.5);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.story-details p {
+  color: #d4a574;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.story-text {
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(77, 171, 247, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #4dabf7;
+}
+
+.outcome {
+  color: #74c0fc;
+  font-weight: bold;
+  padding: 0.8rem;
+  background: rgba(77, 171, 247, 0.1);
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Цена сопротивления */
+.resistance-cost {
+  background: rgba(26, 35, 50, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.resistance-cost h2 {
+  color: #ff6b6b;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.cost-statistics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.cost-stat {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 107, 107, 0.3);
+}
+
+.cost-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.cost-label {
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.moral-dilemma {
+  background: rgba(45, 63, 86, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.moral-dilemma h3 {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.moral-dilemma p {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.moral-dilemma blockquote {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  font-style: italic;
+  margin: 2rem 0 1rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 107, 107, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #ff6b6b;
+  line-height: 1.6;
+}
+
+.moral-dilemma cite {
+  color: #d4a574;
+  font-size: 1rem;
+  display: block;
+  text-align: right;
+}
+
+/* Память о героях */
+.memory-section {
+  background: rgba(26, 35, 50, 0.9);
+  padding: 3rem;
+  border-radius: 15px;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.memory-section h2 {
+  color: #4dabf7;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.heroes-memorial p {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.memorial-quote blockquote {
+  font-size: 1.4rem;
+  color: #e0e0e0;
+  font-style: italic;
+  line-height: 1.8;
+  padding: 2rem;
+  background: rgba(77, 171, 247, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #4dabf7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .page44 {
+    padding: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .stats-banner {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .escape-map {
+    height: 300px;
+  }
+
+  .connection-network {
+    width: 300px;
+    height: 300px;
+  }
+
+  .node-content {
+    width: 140px;
+    padding: 0.8rem;
+  }
+
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leaders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leader-card {
+    flex-direction: column;
+  }
+
+  .leader-photo {
+    flex: 0 0 200px;
+  }
+}
+/* Навигация между страницами */
+.page-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 60, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(100, 100, 150, 0.4);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #6c63ff, #74c0fc);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  background: linear-gradient(135deg, #74c0fc, #a5d6ff);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #a5d6ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .page-navigation {
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .page-info {
+    font-size: 1rem;
+  }
+}
